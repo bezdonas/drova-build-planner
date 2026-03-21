@@ -79,10 +79,6 @@ function getAllDependents(skillId: string): string[] {
   return result
 }
 
-function costOfSkills(ids: string[]): number {
-  return ids.reduce((sum, id) => sum + (SKILL_MAP.get(id)?.cost ?? 0), 0)
-}
-
 function toggleSkill(skillId: string) {
   const next = new Set(selectedSkillIds.value)
 
