@@ -2,9 +2,7 @@
 import { useBuild } from '../composables/useBuild'
 
 const {
-  totalLpAvailable,
   totalLpSpent,
-  lpRemaining,
   statLpSpent,
   skillLpSpent,
   strength,
@@ -25,17 +23,9 @@ const {
     </div>
 
     <div class="lp-display">
-      <div class="lp-bar">
-        <div
-          class="lp-fill"
-          :style="{ width: `${Math.min((totalLpSpent / totalLpAvailable) * 100, 100)}%` }"
-        />
-      </div>
       <div class="lp-text">
         <span class="lp-spent">{{ totalLpSpent }}</span>
-        <span class="lp-sep"> / </span>
-        <span class="lp-total">{{ totalLpAvailable }} LP</span>
-        <span class="lp-remaining">({{ lpRemaining }} remaining)</span>
+        <span class="lp-total"> LP used</span>
       </div>
     </div>
 
@@ -124,21 +114,6 @@ const {
   margin-bottom: 12px;
 }
 
-.lp-bar {
-  height: 8px;
-  background: var(--color-border);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 4px;
-}
-
-.lp-fill {
-  height: 100%;
-  background: var(--color-accent);
-  border-radius: 4px;
-  transition: width 0.2s ease;
-}
-
 .lp-text {
   font-size: 13px;
 }
@@ -148,18 +123,8 @@ const {
   color: var(--color-accent);
 }
 
-.lp-sep {
-  color: var(--color-text-muted);
-}
-
 .lp-total {
   color: var(--color-text);
-}
-
-.lp-remaining {
-  color: var(--color-text-muted);
-  margin-left: 4px;
-  font-size: 12px;
 }
 
 .summary-stats {

@@ -95,10 +95,6 @@ function toggleSkill(skillId: string) {
     const skill = SKILL_MAP.get(skillId)
     if (!skill) return
 
-    const totalNewCost =
-      skill.cost + costOfSkills(prereqs)
-    if (totalNewCost > lpRemaining.value) return
-
     for (const id of prereqs) next.add(id)
     next.add(skillId)
   }
@@ -123,14 +119,8 @@ function meetsProwess(skillId: string): boolean {
   return prowess.value >= skill.prowess
 }
 
-function canAfford(skillId: string): boolean {
-  if (selectedSkillIds.value.has(skillId)) return true
-  const skill = SKILL_MAP.get(skillId)
-  if (!skill) return false
-  const prereqs = getAllPrerequisites(skillId).filter(
-    (id) => !selectedSkillIds.value.has(id),
-  )
-  return skill.cost + costOfSkills(prereqs) <= lpRemaining.value
+function canAfford(_skillId: string): boolean {
+  return true
 }
 
 type StatName = 'strength' | 'dexterity' | 'mind'
@@ -143,9 +133,8 @@ const statBases = {
 } as const
 
 function incrementStat(stat: StatName, amount = 1) {
-  const add = Math.min(amount, lpRemaining.value)
-  if (add <= 0) return
-  statRefs[stat].value += add
+  if (amount <= 0) return
+  statRefs[stat].value += amount
 }
 
 function decrementStat(stat: StatName, amount = 1) {

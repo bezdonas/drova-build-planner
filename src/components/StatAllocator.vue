@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useBuild } from '../composables/useBuild'
 
-const { strength, dexterity, mind, prowess, statLpSpent, incrementStat, decrementStat, lpRemaining } =
+const { strength, dexterity, mind, prowess, statLpSpent, incrementStat, decrementStat } =
   useBuild()
 
 function onDecrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent) {
@@ -29,7 +29,7 @@ function onIncrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent)
           class="stat-btn"
           title="Hold Shift to add 10"
           @click="onIncrement('strength', $event)"
-          :disabled="lpRemaining <= 0"
+          :disabled="false"
         >+</button>
         <span class="stat-effect">+{{ strength - 5 }}% dmg</span>
       </div>
@@ -47,7 +47,7 @@ function onIncrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent)
           class="stat-btn"
           title="Hold Shift to add 10"
           @click="onIncrement('dexterity', $event)"
-          :disabled="lpRemaining <= 0"
+          :disabled="false"
         >+</button>
         <span class="stat-effect">+{{ ((dexterity - 5) * 0.4).toFixed(1) }}% crit</span>
       </div>
@@ -65,7 +65,7 @@ function onIncrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent)
           class="stat-btn"
           title="Hold Shift to add 10"
           @click="onIncrement('mind', $event)"
-          :disabled="lpRemaining <= 0"
+          :disabled="false"
         >+</button>
       </div>
 
