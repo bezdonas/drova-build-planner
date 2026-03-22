@@ -13,7 +13,7 @@ const mind = ref(BASE_MIND)
 const totalLpAvailable = ref(DEFAULT_TOTAL_LP)
 const selectedSkillIds = ref(new Set<string>())
 
-const prowess = computed(() => strength.value + dexterity.value)
+const prowess = computed(() => strength.value + dexterity.value + mind.value)
 
 const statLpSpent = computed(
   () =>
@@ -142,8 +142,8 @@ function decrementStat(stat: StatName, amount = 1) {
   statRefs[stat].value -= remove
 
   // Remove skills whose prowess requirement is no longer met
-  if (stat === 'strength' || stat === 'dexterity') {
-    const newProwess = strength.value + dexterity.value
+  {
+    const newProwess = strength.value + dexterity.value + mind.value
     const toRemove: string[] = []
     for (const id of selectedSkillIds.value) {
       const skill = SKILL_MAP.get(id)

@@ -364,7 +364,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         name: 'Basic Shieldfighting',
         category: 'shield',
         cost: 3,
-        prowess: 50,
+        prowess: 30,
         prerequisites: [],
         description:
           'You can now perform a <b>Perfect Block</b> with your shield.',
