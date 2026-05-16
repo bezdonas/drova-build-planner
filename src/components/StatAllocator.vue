@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { useBuild } from '../composables/useBuild'
+import { strDamagePercent } from '../data/strDamage'
+import { computed } from 'vue'
 
 const { strength, dexterity, mind, prowess, statLpSpent, incrementStat, decrementStat } =
   useBuild()
+
+const strDamage = computed(() => strDamagePercent(strength.value))
 
 function onDecrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent) {
   decrementStat(stat, event.shiftKey ? 10 : 1)
@@ -31,7 +35,7 @@ function onIncrement(stat: 'strength' | 'dexterity' | 'mind', event: MouseEvent)
           @click="onIncrement('strength', $event)"
           :disabled="false"
         >+</button>
-        <span class="stat-effect">+{{ strength - 5 }}% dmg</span>
+        <span class="stat-effect">{{ strDamage }}% dmg</span>
       </div>
 
       <div class="stat-group">

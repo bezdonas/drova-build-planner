@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { SKILL_CATEGORIES, SKILL_MAP } from '../data/skills'
+import { strDamagePercent } from '../data/strDamage'
 import type { Skill } from '../types'
 
 const BASE_STR = 5
@@ -190,14 +191,11 @@ const aggregatedBonuses = computed(() => {
   const bonusMap = new Map<string, AggregatedBonus>()
 
   // Stat bonuses
-  const strBonus = strength.value - BASE_STR
-  if (strBonus > 0) {
-    bonusMap.set('stat_phys_damage', {
-      label: 'Physical damage (STR)',
-      value: strBonus,
-      unit: '%',
-    })
-  }
+  bonusMap.set('stat_phys_damage', {
+    label: 'Physical damage (STR)',
+    value: strDamagePercent(strength.value),
+    unit: '%',
+  })
   const dexBonus = (dexterity.value - BASE_DEX) * 0.4
   if (dexBonus > 0) {
     bonusMap.set('stat_crit', {
