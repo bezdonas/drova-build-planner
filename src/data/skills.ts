@@ -418,7 +418,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: 'slingshot-basic',
         name: 'Basic Slingshotfighting',
         category: 'slingshot',
-        cost: 3,
+        cost: 2,
         prowess: 30,
         prerequisites: [],
         description:
@@ -437,7 +437,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: 'slingshot-masterful',
         name: 'Masterful Slingshotfighting',
         category: 'slingshot',
-        cost: 4,
+        cost: 3,
         prowess: 55,
         prerequisites: ['slingshot-basic'],
         description:
@@ -481,7 +481,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: 'bow-basic',
         name: 'Basic Bowfighting',
         category: 'bow',
-        cost: 3,
+        cost: 2,
         prowess: 30,
         prerequisites: [],
         description:
@@ -499,7 +499,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
         id: 'bow-masterful',
         name: 'Masterful Bowfighting',
         category: 'bow',
-        cost: 4,
+        cost: 3,
         prowess: 55,
         prerequisites: ['bow-basic'],
         description:
